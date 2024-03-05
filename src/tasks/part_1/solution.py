@@ -1,30 +1,37 @@
 import numpy as np
+import matplotlib.pyplot as plt
+
+from api.v1.router.schemas import SchemaTask2, SchemaTask4, SchemaTask5, \
+    SchemaTask6
 
 
-def task1(total_details, failed_details, time_period) -> dict:
-    reliability_probability = (total_details - failed_details) / total_details
-    failure_probability = failed_details / total_details
+def task1(data: dict) -> dict:
+    task = SchemaTask2(**data)
 
-    return {f"P({time_period})": str(reliability_probability),
-            f"Q({time_period})": str(failure_probability)}
+    reliability_probability = (
+                                      task.total_details - task.failed_details) / task.total_details
+    failure_probability = task.failed_details / task.total_details
+
+    return {f"P({task.time_period})": str(reliability_probability),
+            f"Q({task.time_period})": str(failure_probability)}
 
 
 def task2(data: dict) -> dict:
-    def calc_failure_frequency(faulured_details, initial_details, period):
-        print(f'{faulured_details=}, '
-              f'{initial_details=},'
+    def calc_failure_frequency(_failure_details, _initial_details, period):
+        print(f'{_failure_details=}, '
+              f'{_initial_details=},'
               f'{period=}')
         return np.format_float_scientific(
-            faulured_details / (initial_details * period), precision=2)
+            _failure_details / (_initial_details * period), precision=2)
 
-    def calc_failure_rate(faulured_details, avg_worksfine_details, period):
+    def calc_failure_rate(failure_details, avg_works_fine_details, period):
         return np.format_float_scientific(
-            faulured_details / (avg_worksfine_details * period), precision=1)
+            failure_details / (avg_works_fine_details * period), precision=1)
 
-    def calc_average_worksfine_details_on_period(
+    def calc_average_works_fine_details_on_period(
             on_begin_details: int,
             failed_period: dict):
-        # число исправно работяющих изделий к концу крайнего интервала времени
+        # число исправно работающих изделий к концу крайнего интервала времени
         for failed_periods, count_failed in failed_period.items():
             on_begin_details -= count_failed
             avg_work_fines_details_in_period.append(on_begin_details)
@@ -45,24 +52,24 @@ def task2(data: dict) -> dict:
     avg_work_fines_details_in_period = []
 
     # среднее число работающих деталей
-    avg_work_fines = calc_average_worksfine_details_on_period(
+    avg_work_fines = calc_average_works_fine_details_on_period(
         on_begin_details=initial_details,
         failed_period=initial_failed_periods
     )
 
     # число отказавших деталей за указанный интервал времени
-    failured_details = initial_failed_periods.get(
+    failure_details = initial_failed_periods.get(
         str(desired_periods.get("end")))
 
     # расчетный период времени
     delta_t = desired_periods.get("end") - desired_periods.get("start")
 
-    alpha_t = calc_failure_frequency(faulured_details=failured_details,
-                                     initial_details=initial_details,
+    alpha_t = calc_failure_frequency(_failure_details=failure_details,
+                                     _initial_details=initial_details,
                                      period=delta_t)
 
-    failure_rate = calc_failure_rate(faulured_details=failured_details,
-                                     avg_worksfine_details=avg_work_fines,
+    failure_rate = calc_failure_rate(failure_details=failure_details,
+                                     avg_works_fine_details=avg_work_fines,
                                      period=delta_t)
 
     return {"failure_freq": str(alpha_t),
@@ -77,7 +84,8 @@ def task3(data: dict) -> dict:
     failure_freq = []
     failure_rate = []
     fine_in_period = initial_details
-
+    x_axis = [0, *[count * delta_time for count, _ in
+                   enumerate(failures_list, start=1)]]
     accum_failure = 0
 
     for failure in failures_list:
@@ -91,12 +99,66 @@ def task3(data: dict) -> dict:
             (delta_time * (
                 np.average([fine_in_period, fine_in_period - failure]))),
             precision=2))
-        print(delta_time, fine_in_period, fine_in_period - failure)
+
         fine_in_period -= failure
 
-    print(accum_failure)
-    print(len(failures_list)*delta_time)
+    alt_x = [*x_axis[1:]]
+    # Создаем фигуру и массив подграфиков (осей)
+    # 3 графика вертикально, 1 колонка
+    fig, axs = plt.subplots(1, 2, figsize=(15, 5))
+    axs[0].plot(x_axis, [1, *probability_fine],
+                label="Вероятность безотказной работы")
+    axs[0].set_ylabel("Probability")
+    axs[0].set_title("Вероятность безотказной работы")
+    axs[0].legend()
 
+    # Второй под график с двумя графиками: частота отказов 
+    # и интенсивность отказов
+    axs[1].plot(alt_x, [float(i) * 10000 for i in failure_freq],
+                label="Частота отказов")
+    axs[1].plot(alt_x, [float(i) * 10000 for i in failure_rate],
+                label="Интенсивность отказов")
+    axs[1].set_ylabel("Интенсивность отказов")
+    axs[1].set_title("Частота и интенсивность отказов")
+    axs[1].legend()  # Показываем легенду для различения графиков
+
+    # Автоматически настраиваем отступы между подграфиками
+    plt.tight_layout()
+
+    # Показываем фигуру
+
+    plt.show()
     return {"P(t)": f"{probability_fine}",
             "a(t)": f"{failure_freq}",
             "lambda(t)": f"{failure_rate}"}
+
+
+def task4(data: dict) -> dict:
+    task = SchemaTask4(**data)
+    delta_time = task.end_time - task.time_before
+    return {"T0": delta_time / task.total_failures}
+
+
+def task5(data: dict) -> dict:
+    task = SchemaTask5(**data)
+    sum_work = sum(task.work_times)
+    sum_failures = sum(task.failures)
+    return {"avgT0": sum_work / sum_failures}
+
+
+def task6(data: dict) -> dict:
+    task = SchemaTask6(**data)
+    failures = task.failures
+    failure_time = task.failure_time
+    mttf_components = [t / f if f != 0 else float('inf') for f, t in
+                       zip(failures, failure_time)]
+
+    # Calculate harmonic mean of MTTF for the system
+    finite_mttf_components = [m for m in mttf_components if m != float('inf')]
+    mttf_system = 1 / sum(
+        1 / m for m in
+        finite_mttf_components) if finite_mttf_components else float(
+        'inf')
+
+    # Return the result in the specified format
+    return {"avgT0": mttf_system}

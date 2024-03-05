@@ -1,0 +1,16 @@
+{
+  "description": "Flash drives",
+  "failures": [
+    2,
+    5,
+    3,
+    4
+  ],
+  "work_times": [
+    951,
+    1521,
+    2122,
+    2506
+  ],
+  "unit": "write cycles"
+}
