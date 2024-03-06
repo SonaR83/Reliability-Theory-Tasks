@@ -5,6 +5,7 @@ from api.v1.router.schemas import SchemaPart2Task1, SchemaPart2Task2, \
 
 
 def task1(data: dict) -> dict:
+    print("it works")
     task = SchemaPart2Task1(**data)
 
     lambda_value = float(np.format_float_scientific(task.lambda_value))
