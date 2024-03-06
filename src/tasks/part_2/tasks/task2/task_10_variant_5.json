@@ -1,0 +1,94 @@
+{
+    "total_failures": 40,
+    "groups": [
+        {
+            "group": {
+                "failure_weight": 0.15,
+                "recovery_time": [
+                    6,
+                    20,
+                    19,
+                    18,
+                    19,
+                    16
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.1,
+                "recovery_time": [
+                    9,
+                    6,
+                    12,
+                    5
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.125,
+                "recovery_time": [
+                    7,
+                    9,
+                    11,
+                    20,
+                    22
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.175,
+                "recovery_time": [
+                    11,
+                    19,
+                    26,
+                    22,
+                    18,
+                    27,
+                    13
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.075,
+                "recovery_time": [
+                    18,
+                    15,
+                    12
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.15,
+                "recovery_time": [
+                    29,
+                    26,
+                    22,
+                    28,
+                    31,
+                    33
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.225,
+                "recovery_time": [
+                    21,
+                    20,
+                    26,
+                    22,
+                    11,
+                    9,
+                    13,
+                    24,
+                    23
+                ]
+            }
+        }
+    ]
+}

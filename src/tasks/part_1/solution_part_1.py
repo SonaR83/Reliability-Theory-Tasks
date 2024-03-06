@@ -1,12 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from api.v1.router.schemas import SchemaTask2, SchemaTask4, SchemaTask5, \
-    SchemaTask6
+from api.v1.router.schemas import (
+    SchemaPart1Task2, SchemaPart1Task4, SchemaPart1Task5,
+    SchemaPart1Task6, SchemaPart1Task7, SchemaPart1Task8)
 
 
 def task1(data: dict) -> dict:
-    task = SchemaTask2(**data)
+    task = SchemaPart1Task2(**data)
 
     reliability_probability = (
                                       task.total_details - task.failed_details) / task.total_details
@@ -134,20 +135,20 @@ def task3(data: dict) -> dict:
 
 
 def task4(data: dict) -> dict:
-    task = SchemaTask4(**data)
+    task = SchemaPart1Task4(**data)
     delta_time = task.end_time - task.time_before
     return {"T0": delta_time / task.total_failures}
 
 
 def task5(data: dict) -> dict:
-    task = SchemaTask5(**data)
+    task = SchemaPart1Task5(**data)
     sum_work = sum(task.work_times)
     sum_failures = sum(task.failures)
     return {"avgT0": sum_work / sum_failures}
 
 
 def task6(data: dict) -> dict:
-    task = SchemaTask6(**data)
+    task = SchemaPart1Task6(**data)
     failures = task.failures
     failure_time = task.failure_time
     mttf_components = [t / f if f != 0 else float('inf') for f, t in
@@ -162,3 +163,16 @@ def task6(data: dict) -> dict:
 
     # Return the result in the specified format
     return {"avgT0": mttf_system}
+
+
+def task7(data: dict) -> dict:
+    task = SchemaPart1Task7(**data)
+
+    return {"avg recovery time": np.average(task.recovery_times)}
+
+
+def task8(data: dict) -> dict:
+    task = SchemaPart1Task8(**data)
+
+    return {"availability factor": task.avg_failure_time / sum(
+        [task.avg_failure_time, task.recovery_time])}

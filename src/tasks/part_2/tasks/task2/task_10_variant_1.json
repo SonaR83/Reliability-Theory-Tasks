@@ -1,0 +1,104 @@
+{
+    "total_failures": 50,
+    "groups": [
+        {
+            "group": {
+                "failure_weight": 0.08,
+                "recovery_time": [
+                    19,
+                    12,
+                    15,
+                    9
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.12,
+                "recovery_time": [
+                    7,
+                    5,
+                    9,
+                    15,
+                    13,
+                    21
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.4,
+                "recovery_time": [
+                    21,
+                    11,
+                    15,
+                    9,
+                    21,
+                    16,
+                    19,
+                    20,
+                    10,
+                    17,
+                    17,
+                    21,
+                    21,
+                    22,
+                    25,
+                    14,
+                    22,
+                    17,
+                    23,
+                    23
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.2,
+                "recovery_time": [
+                    15,
+                    11,
+                    13,
+                    14,
+                    14,
+                    17,
+                    25,
+                    20,
+                    18,
+                    22
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.06,
+                "recovery_time": [
+                    15,
+                    21,
+                    15
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.1,
+                "recovery_time": [
+                    21,
+                    11,
+                    19,
+                    24,
+                    19
+                ]
+            }
+        },
+        {
+            "group": {
+                "failure_weight": 0.04,
+                "recovery_time": [
+                    16,
+                    18
+                ]
+            }
+        }
+    ]
+}

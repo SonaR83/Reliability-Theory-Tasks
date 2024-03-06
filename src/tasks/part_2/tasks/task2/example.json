@@ -1,0 +1,84 @@
+{
+  "total_failures": 40,
+  "groups": [
+    {
+      "group": {
+        "failure_weight": 0.2,
+        "recovery_time": [
+          80,
+          59,
+          110,
+          91,
+          45,
+          43,
+          99,
+          73
+        ]
+      }
+    },
+    {
+      "group": {
+        "failure_weight": 0.25,
+        "recovery_time": [
+          61,
+          73,
+          91,
+          58,
+          44,
+          112,
+          82,
+          54,
+          91,
+          94
+        ]
+      }
+    },
+    {
+      "group": {
+        "failure_weight": 0.1,
+        "recovery_time": [
+          102,
+          98,
+          124,
+          128
+        ]
+      }
+    },
+    {
+      "group": {
+        "failure_weight": 0.35,
+        "recovery_time": [
+          60,
+          64,
+          56,
+          36,
+          65,
+          44,
+          42,
+          33,
+          32,
+          23,
+          86,
+          75,
+          61,
+          23
+        ]
+      }
+    },
+    {
+      "group": {
+        "failure_weight": 0.1,
+        "recovery_time": [
+          125,
+          133,
+          115,
+          107
+        ]
+      }
+    }
+  ]
+}
+
+
+
+

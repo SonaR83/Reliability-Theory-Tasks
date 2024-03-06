@@ -1,0 +1,4 @@
+{
+  "lambda_value": 2.5e-5,
+  "check_time_intervals": [500, 1000, 2000]
+}
