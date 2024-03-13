@@ -9,8 +9,12 @@ from api.v1.router.schemas import (
 def task1(data: dict) -> dict:
     task = SchemaPart1Task2(**data)
 
+    # отношение разности исправных и отказавших деталей к общему числу деталей
     reliability_probability = (
                                       task.total_details - task.failed_details) / task.total_details
+    # отношение отказавших деталей к общему числу деталей
+    #  или как 1- reliability_probability - так как исправность и отказ
+    # являются несовместными событиями
     failure_probability = task.failed_details / task.total_details
 
     return {f"P({task.time_period})": str(reliability_probability),
@@ -18,21 +22,29 @@ def task1(data: dict) -> dict:
 
 
 def task2(data: dict) -> dict:
+    # частота отказа
     def calc_failure_frequency(_failure_details, _initial_details, period):
+
         print(f'{_failure_details=}, '
               f'{_initial_details=},'
               f'{period=}')
+        # считается как отношение отказавшизх деталей за период времени
+        # к начальному числу деталей за этот же период времени
         return np.format_float_scientific(
             _failure_details / (_initial_details * period), precision=2)
 
     def calc_failure_rate(failure_details, avg_works_fine_details, period):
+        # интенсивность отказа: считается как отношение неисправных деталей
+        # к среднему числу исправных деталей за период времени
         return np.format_float_scientific(
             failure_details / (avg_works_fine_details * period), precision=1)
 
     def calc_average_works_fine_details_on_period(
             on_begin_details: int,
             failed_period: dict):
+        # для каждого периода времени считаем
         # число исправно работающих изделий к концу крайнего интервала времени
+        # и добавляем в массив чтобы потом по нему посчитать среднее значение
         for failed_periods, count_failed in failed_period.items():
             on_begin_details -= count_failed
             avg_work_fines_details_in_period.append(on_begin_details)
@@ -57,6 +69,7 @@ def task2(data: dict) -> dict:
         on_begin_details=initial_details,
         failed_period=initial_failed_periods
     )
+    print(avg_work_fines)
 
     # число отказавших деталей за указанный интервал времени
     failure_details = initial_failed_periods.get(
@@ -65,6 +78,7 @@ def task2(data: dict) -> dict:
     # расчетный период времени
     delta_t = desired_periods.get("end") - desired_periods.get("start")
 
+    # частота отказа
     alpha_t = calc_failure_frequency(_failure_details=failure_details,
                                      _initial_details=initial_details,
                                      period=delta_t)
@@ -73,8 +87,8 @@ def task2(data: dict) -> dict:
                                      avg_works_fine_details=avg_work_fines,
                                      period=delta_t)
 
-    return {"failure_freq": str(alpha_t),
-            "failure_rate": str(failure_rate)}
+    return {f"failure_freq({delta_t})": str(alpha_t),
+            f"failure_rate({delta_t})": str(failure_rate)}
 
 
 def task3(data: dict) -> dict:
@@ -90,11 +104,15 @@ def task3(data: dict) -> dict:
     accum_failure = 0
 
     for failure in failures_list:
+        # считаем число отказавших деталей в каждый период времени
         accum_failure += failure
+        # для каждого интервала времени считаем ВБР
         probability_fine.append(
             (initial_details - accum_failure) / initial_details)
+        # для каждого интервала времени считаем частоту отказа
         failure_freq.append(np.format_float_scientific(
             failure / (initial_details * delta_time), precision=2))
+        # для каждого интервала времени считаем интенсивность отказа
         failure_rate.append(np.format_float_scientific(
             failure /
             (delta_time * (
