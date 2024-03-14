@@ -1,8 +1,13 @@
 import axios from "axios"
+import { useState } from "react"
 import style from "./TestLogicComponent.module.css"
 import { Button } from "primereact/button"
+import { Dialog } from "primereact/dialog"
 
-export default function TestLogicComponent() {
+export default function PartOne() {
+  const [visible, setVisible] = useState(false)
+  const [answer, setAnswer] = useState(null)
+
   const taskHandler = (event, { part, task, variant }) => {
     const request_task = async () => {
       const response_task = await axios.get(
@@ -28,6 +33,7 @@ export default function TestLogicComponent() {
         })
         .then((response) => {
           console.log(response.data)
+          setAnswer(JSON.stringify(response.data))
         })
         .catch((error) => {
           if (error.response) {
@@ -45,6 +51,7 @@ export default function TestLogicComponent() {
           }
         })
     })
+    setVisible(true)
   }
   return (
     <div className={style.content}>
@@ -67,6 +74,14 @@ export default function TestLogicComponent() {
             taskHandler(event, { part: 1, task: 1, variant: 2 })
           }
         />
+        <Dialog
+          header="Ответ"
+          visible={visible}
+          style={{ width: "50vw" }}
+          onHide={() => setVisible(false)}
+        >
+          <p className="m-0">{answer}</p>
+        </Dialog>
         <Button
           className={style.button}
           label="Вариант 3"
