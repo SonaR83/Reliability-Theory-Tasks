@@ -3,9 +3,9 @@ from pydantic import BaseModel
 
 
 class SchemaPart1Task2(BaseModel):
-    total_details: int = Query()
-    failed_details: int = Query()
-    time_period: int = Query()
+    total_details: int = None
+    failed_details: int = None
+    time_period: int = None
 
 
 class SchemaPart1Task4(BaseModel):

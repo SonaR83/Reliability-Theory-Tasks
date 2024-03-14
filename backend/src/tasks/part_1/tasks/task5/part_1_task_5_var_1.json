@@ -1,0 +1,13 @@
+{
+  "description": "OLED-panels",
+  "failures": [
+    2,
+    5,
+    1
+  ],
+  "work_times": [
+    200,
+    422,
+    141
+  ]
+}

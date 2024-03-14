@@ -1,0 +1,18 @@
+{
+  "description": "SSD",
+  "failures": [
+    1,
+    1,
+    2,
+    3,
+    4
+  ],
+  "work_times": [
+    10000,
+    11200,
+    12200,
+    12500,
+    12900
+  ],
+  "unit": "write cycles"
+}

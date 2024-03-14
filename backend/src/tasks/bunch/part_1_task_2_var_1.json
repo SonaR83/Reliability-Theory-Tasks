@@ -1,0 +1,11 @@
+{
+  "total_details": 5000,
+  "failed_periods": {
+    "10000": 30,
+    "11000": 11
+  },
+  "desired_period": {
+    "start": 10000,
+    "end": 11000
+  }
+}
