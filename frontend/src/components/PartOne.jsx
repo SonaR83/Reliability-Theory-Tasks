@@ -57,6 +57,14 @@ export default function PartOne() {
     <div className={style.content}>
       <div className={style.variants}>
         <h2>Задача 1</h2>
+        <Dialog
+          header="Ответ"
+          visible={visible}
+          style={{ width: "50vw" }}
+          onHide={() => setVisible(false)}
+        >
+          <p className="m-0">{answer}</p>
+        </Dialog>
         <Button
           className={style.button}
           label="Вариант 1"
@@ -74,14 +82,7 @@ export default function PartOne() {
             taskHandler(event, { part: 1, task: 1, variant: 2 })
           }
         />
-        <Dialog
-          header="Ответ"
-          visible={visible}
-          style={{ width: "50vw" }}
-          onHide={() => setVisible(false)}
-        >
-          <p className="m-0">{answer}</p>
-        </Dialog>
+
         <Button
           className={style.button}
           label="Вариант 3"
