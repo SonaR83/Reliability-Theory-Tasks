@@ -1,0 +1,5 @@
+{
+  "quantity": [10500],
+  "lambda_value": [5.25e-5],
+  "check_time_interval": [2000]
+}

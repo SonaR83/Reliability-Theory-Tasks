@@ -6,6 +6,7 @@ import "primeicons/primeicons.css"
 import "./App.css"
 import PartOne from "./components/PartOne"
 import PartTwo from "./components/PartTwo"
+import PartThree from "./components/PartThree"
 import MainLayout from "./components/layouts/MainLayout"
 import MainMenu from "./components/MainMenu"
 
@@ -17,6 +18,7 @@ function App() {
         <Route index element={<MainMenu />} />
         <Route path="part1" element={<PartOne />} />
         <Route path="part2" element={<PartTwo />} />
+        <Route path="part3" element={<PartThree />} />
       </Routes>
     </BrowserRouter>
   )

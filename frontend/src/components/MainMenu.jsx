@@ -63,6 +63,21 @@ function MainMenu() {
                 }}
               />
             </Link>
+
+            <Link to="part3">
+              <Button
+                label="Part 3"
+                onClick={() => navigateHandler("part3")}
+                style={{
+                  width: "60px",
+                  height: "30px",
+                  borderRadius: "1px",
+                  margin: "5px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              />
+            </Link>
           </div>
         </div>
       </Card>

@@ -1,0 +1,4 @@
+{
+  "mtff": [160, 320, 600],
+  "reliability_law": "exponential"
+}

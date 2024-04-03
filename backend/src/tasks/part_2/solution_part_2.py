@@ -1,7 +1,7 @@
 import numpy as np
 
-from api.v1.router.schemas import SchemaPart2Task1, SchemaPart2Task2, \
-    GroupsModel, GroupModel
+from api.v1.router.schemas import (SchemaPart2Task1, SchemaPart2Task2,
+                                   GroupsModel, GroupModel)
 
 
 def task1(data: dict) -> dict:

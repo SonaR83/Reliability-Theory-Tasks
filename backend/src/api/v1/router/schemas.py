@@ -51,3 +51,30 @@ class GroupsModel(BaseModel):
 class SchemaPart2Task2(BaseModel):
     total_failures: int
     groups: list[GroupsModel]
+
+
+class SchemaPart3Task1(BaseModel):
+    quantity: list[int]
+    lambda_value: list[float]
+    check_time_interval: list[int]
+
+
+class SchemaPart3Task2(BaseModel):
+    mtff: list[int]
+    reliability_law: str
+
+
+class SchemaPart3Task3(BaseModel):
+    probabilities_of_non_failure: list[float]
+    time_interval: int | float
+    reliability_law: str
+
+
+class SchemaPart3Task4(BaseModel):
+    probabilities_of_non_failure: float
+    quantity: int | float
+
+
+class SchemaPart3Task6(BaseModel):
+    probabilities_of_non_failure: list[float]
+    time_interval: int | float

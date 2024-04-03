@@ -1,0 +1,5 @@
+{
+  "probabilities_of_non_failure": [0.84, 0.89, 0.94],
+  "time_interval": 200,
+  "reliability_law": "exponential"
+}
