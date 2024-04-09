@@ -1,5 +1,14 @@
+from typing import Optional
+
 from fastapi import Query
 from pydantic import BaseModel
+from enum import Enum
+
+
+class ProbabilityLaw(Enum):
+    EXPONENTIAL = "EXPONENTIAL"
+    WEIBULL = "WEIBULL"
+    RELAY = "RELAY"
 
 
 class SchemaPart1Task2(BaseModel):
@@ -78,3 +87,12 @@ class SchemaPart3Task4(BaseModel):
 class SchemaPart3Task6(BaseModel):
     probabilities_of_non_failure: list[float]
     time_interval: int | float
+
+
+class SchemaPart3Task8(BaseModel):
+    law: ProbabilityLaw
+    failure_rate: Optional[float] = None
+    theta: Optional[float] = None
+    k: Optional[float] = None
+
+

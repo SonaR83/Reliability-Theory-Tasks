@@ -5,7 +5,7 @@ from fastapi import status
 from fastapi.responses import ORJSONResponse
 
 from tasks.part_3.solution_part_3 import (task1, task2, task3, task4, task5,
-                                          task6)
+                                          task6, task7, task8)
 
 # from tasks.part_3.solution_part_3 import task1
 
@@ -49,5 +49,18 @@ async def part_3_task_5(file_bytes: bytes = File(), ) -> ORJSONResponse:
 @part_3.post("/part_3_task_6", response_class=ORJSONResponse)
 async def part_3_task_6(file_bytes: bytes = File(), ) -> ORJSONResponse:
     result = task6(json.loads(file_bytes))
+
+    return ORJSONResponse(content=result, status_code=status.HTTP_200_OK)
+
+
+@part_3.post("/part_3_task_7", response_class=ORJSONResponse)
+async def part_3_task_7(file_bytes: bytes = File(), ) -> ORJSONResponse:
+    result = task7(json.loads(file_bytes))
+
+    return ORJSONResponse(content=result, status_code=status.HTTP_200_OK)
+
+@part_3.post("/part_3_task_8", response_class=ORJSONResponse)
+async def part_3_task_8(file_bytes: bytes = File(), ) -> ORJSONResponse:
+    result = task8(json.loads(file_bytes))
 
     return ORJSONResponse(content=result, status_code=status.HTTP_200_OK)

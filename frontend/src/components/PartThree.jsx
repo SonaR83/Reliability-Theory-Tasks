@@ -72,6 +72,22 @@ export default function PartThree() {
         {genericButton(style.button, setVisible, setAnswer, 3, 6, 4)}
         {genericButton(style.button, setVisible, setAnswer, 3, 6, 5)}
       </div>
+      <div className={style.variants}>
+        <h2>Задача 7</h2>
+        {genericButton(style.button, setVisible, setAnswer, 3, 7, 1)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 7, 2)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 7, 3)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 7, 4)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 7, 5)}
+      </div>
+      <div className={style.variants}>
+        <h2>Задача 8</h2>
+        {genericButton(style.button, setVisible, setAnswer, 3, 8, 1)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 8, 2)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 8, 3)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 8, 4)}
+        {genericButton(style.button, setVisible, setAnswer, 3, 8, 5)}
+      </div>
     </div>
   )
 }

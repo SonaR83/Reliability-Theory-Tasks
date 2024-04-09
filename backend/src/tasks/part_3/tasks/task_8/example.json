@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "law": "EXPONENTIAL",
+      "failure_rate": 0.2e-3
+    },
+    {
+      "law": "RELAY",
+      "theta": 1000
+    },
+    {
+      "law": "WEIBULL",
+      "failure_rate": 0.1e-4,
+      "k": 1.5
+    }
+  ],
+  "time_interval": 500
+}

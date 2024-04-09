@@ -1,0 +1,51 @@
+{
+  "elements": [
+    {
+      "type": "resistor123",
+      "quantity": 3,
+      "failure_rate": 0.003e-5
+    },
+    {
+      "type": "resistor456",
+      "quantity": 3,
+      "failure_rate": 0.012e-5
+    },
+    {
+      "type": "resistor78",
+      "quantity": 2,
+      "failure_rate": 0.09e-5
+    },
+
+    {
+      "type": "capacity123",
+      "quantity": 3,
+      "failure_rate": 0.01e-5
+    },
+    {
+      "type": "capacity456",
+      "quantity": 3,
+      "failure_rate": 0.02e-5
+    },
+    {
+      "type": "inductance12",
+      "quantity": 2,
+      "failure_rate": 0.05e-5
+    },
+    {
+      "type": "inductance34",
+      "quantity": 2,
+      "failure_rate": 0.02e-5
+    },
+    {
+      "type": "lamp123",
+      "quantity": 3,
+      "failure_rate": 7.46e-5
+    },
+    {
+      "type": "lamp4",
+      "quantity": 1,
+      "failure_rate": 12.46e-5
+    }
+  ],
+  "time_interval": 50
+}

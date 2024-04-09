@@ -1,0 +1,46 @@
+{
+  "elements": [
+    {
+      "type": "resistor123",
+      "quantity": 3,
+      "failure_rate": 0.01e-5
+    },
+    {
+      "type": "resistor456",
+      "quantity": 3,
+      "failure_rate": 0.81e-5
+    },
+    {
+      "type": "resistor789",
+      "quantity": 3,
+      "failure_rate": 0.28e-5
+    },
+
+    {
+      "type": "capacity123",
+      "quantity": 3,
+      "failure_rate": 0.01e-5
+    },
+    {
+      "type": "capacity456",
+      "quantity": 3,
+      "failure_rate": 0.03e-5
+    },
+    {
+      "type": "capacity78",
+      "quantity": 2,
+      "failure_rate": 0.94e-5
+    },
+    {
+      "type": "lamp123",
+      "quantity": 3,
+      "failure_rate": 3.12e-5
+    },
+    {
+      "type": "lamp4",
+      "quantity": 1,
+      "failure_rate": 5.12e-5
+    }
+  ],
+  "time_interval": 200
+}
